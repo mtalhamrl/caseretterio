@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      MONGO_URI: mongodb://mongo:27017/caseretterio
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - '27017:27017'
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - '6379:6379'
