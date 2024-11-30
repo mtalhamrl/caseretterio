@@ -16,4 +16,8 @@ export class UserService {
   async getUserById(userId: string): Promise<User | null> {
     return this.userModel.findOne({ userId });
   }
+  //jwt için basit bi fonksiyon
+  async findByUsername(username: string): Promise<User | null> {
+    return this.userModel.findOne({ username }).exec();
+  }
 }

@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GameModule } from './game/game.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { LeaderboardModule } from './leaderboard/leaderboard.module';
     ),
     GameModule,
     LeaderboardModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

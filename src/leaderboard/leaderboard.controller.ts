@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, UseGuards } from '@nestjs/common';
 import { LeaderboardService } from './leaderboard.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('leaderboard')
 export class LeaderboardController {
   constructor(private readonly leaderboardService: LeaderboardService) {}
 
   @Post('submit-score')
+  @UseGuards(JwtAuthGuard)
   async submitScore(
     @Body('gameId') gameId: string,
     @Body('userId') userId: string,
